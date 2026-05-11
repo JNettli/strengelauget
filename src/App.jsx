@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import bandImage from "./assets/strengelauget_comp.webp";
 
-const SPOTIFY_URL = "https://open.spotify.com/artist/REPLACE_WITH_YOUR_ID";
+const SPOTIFY_URL = "https://www.google.com/";
 
 const bio = [
     `Skuespiller Espen Rognlien har, på tross av utdannelse som rørleggermester,
