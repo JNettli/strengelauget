@@ -1,7 +1,8 @@
+import { useState } from "react";
 import "./App.css";
 import bandImage from "./assets/strengelauget_comp.webp";
 
-const SPOTIFY_URL = "https://www.google.com/";
+const SPOTIFY_URL = "https://open.spotify.com/artist/REPLACE_WITH_YOUR_ID";
 
 const bio = [
     `Skuespiller Espen Rognlien har, på tross av utdannelse som rørleggermester,
@@ -34,9 +35,11 @@ const bio = [
    White Willow og Nippon Art.`,
 ];
 
-function App() {
+export default function App() {
     return (
         <div className="site">
+            <BurgerMenu />
+
             <aside className="photo-panel" aria-hidden="true">
                 <img
                     src={bandImage}
@@ -66,24 +69,63 @@ function App() {
                         ))}
                     </div>
 
-                    <div className="cta-row">
-                        <a
-                            href={SPOTIFY_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="spotify-btn"
-                        >
-                            <SpotifyIcon />
-                            Hør oss på Spotify
-                        </a>
-                    </div>
-
                     <footer className="site-footer">
                         <span>© {new Date().getFullYear()} Strengelauget</span>
                     </footer>
                 </div>
             </main>
         </div>
+    );
+}
+
+function BurgerMenu() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <>
+            <div
+                className={`menu-backdrop ${isOpen ? "menu-backdrop--open" : ""}`}
+                onClick={() => setIsOpen(false)}
+                aria-hidden="true"
+            />
+
+            <nav className={`menu-drawer ${isOpen ? "menu-drawer--open" : ""}`}>
+                <div className="menu-drawer__inner">
+                    <div className="gold-rule" />
+                    <p className="eyebrow">Finn oss</p>
+                    <a
+                        href={SPOTIFY_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="spotify-btn"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        <SpotifyIcon />
+                        Hør oss på Spotify
+                    </a>
+
+                    <div className="menu-divider" />
+
+                    <p className="eyebrow">Kontakt</p>
+                    <a
+                        href="mailto:kontakt@strengelauget.no"
+                        className="contact-link"
+                    >
+                        kontakt@strengelauget.no
+                    </a>
+                </div>
+            </nav>
+
+            <button
+                className={`burger-btn ${isOpen ? "burger-btn--open" : ""}`}
+                onClick={() => setIsOpen((o) => !o)}
+                aria-label={isOpen ? "Lukk meny" : "Åpne meny"}
+            >
+                <span className="burger-line" />
+                <span className="burger-line" />
+                <span className="burger-line" />
+            </button>
+        </>
     );
 }
 
@@ -99,5 +141,3 @@ function SpotifyIcon() {
         </svg>
     );
 }
-
-export default App;
