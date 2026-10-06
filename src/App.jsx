@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import bandImage from "./assets/strengelauget_comp.webp";
 
-const SPOTIFY_URL = "https://www.google.com/";
+const SPOTIFY_URL = "https://open.spotify.com/";
+const ITUNES_URL = "https://www.apple.com/itunes/";
 
 const bio = [
     `Skuespiller Espen Rognlien har, på tross av utdannelse som rørleggermester,
@@ -58,7 +59,7 @@ export default function App() {
                     </p>
 
                     <h1 className="band-name">
-                        Espen Rognlien & Strengelauget
+                        Strengelauget & Espen Rognlien
                     </h1>
 
                     <div className="divider" />
@@ -103,6 +104,17 @@ function BurgerMenu() {
                         <SpotifyIcon />
                         Hør oss på Spotify
                     </a>
+                    <br />
+                    <a
+                        href={ITUNES_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="spotify-btn"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        <ItunesIcon />
+                        Hør oss på iTunes
+                    </a>
 
                     <div className="menu-divider" />
 
@@ -138,6 +150,19 @@ function SpotifyIcon() {
             aria-hidden="true"
         >
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.516 17.307a.748.748 0 0 1-1.03.25c-2.819-1.722-6.365-2.112-10.542-1.157a.748.748 0 0 1-.333-1.459c4.571-1.045 8.492-.595 11.655 1.337a.75.75 0 0 1 .25 1.029zm1.47-3.268a.937.937 0 0 1-1.288.308c-3.225-1.982-8.142-2.557-11.958-1.399a.937.937 0 0 1-.578-1.786c4.358-1.322 9.776-.682 13.516 1.59a.935.935 0 0 1 .308 1.287zm.126-3.402c-3.868-2.297-10.246-2.509-13.94-1.388a1.124 1.124 0 1 1-.652-2.151c4.239-1.287 11.285-1.038 15.738 1.605a1.124 1.124 0 0 1-1.146 1.934z" />
+        </svg>
+    );
+}
+
+function ItunesIcon() {
+    return (
+        <svg
+            className="spotify-icon"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+        >
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.5 7.5v8.75c0 1.38-1.12 2.5-2.5 2.5s-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5c.36 0 .7.08 1 .21V9.06l-5.5 1.37v7.32c0 1.38-1.12 2.5-2.5 2.5S5.5 19.13 5.5 17.75s1.12-2.5 2.5-2.5c.36 0 .7.08 1 .21V8.7c0-.46.31-.86.76-.97l6.5-1.62a1 1 0 0 1 1.24.97v.42z" />
         </svg>
     );
 }
